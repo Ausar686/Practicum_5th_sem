@@ -1,0 +1,283 @@
+\documentclass[11pt]{article}
+\usepackage{a4wide}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\pdfoutput=1
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} 
+\usepackage{wasysym}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+
+%Титульный лист
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{statement}{Утверждение}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+\vspace{-3cm}
+
+\includegraphics[width=0.5\textwidth]{msu.eps}
+\\
+
+{\scshape Московский государственный университет имени М.~В.~Ломоносова}
+\\
+Факультет вычислительной математики и кибернетики
+\\
+Кафедра системного анализа
+
+\vfill
+{\LARGE Отчёт по практикуму}
+\vspace{1cm}
+
+{\Huge\bfseries <<Лабораторная работа №2>>}
+\end{center}
+\vspace{1cm}
+\begin{flushright}
+\large
+\textit{Студент 315 группы}\\
+Г.~А.~Юшков \\
+\vspace{5mm}
+\textit{Руководитель практикума}\\
+к.ф.-м.н., доцент П.~А.~Точилин
+\end{flushright}
+\vfill
+\begin{center}
+Москва, 2021
+\end{center}
+
+
+\makeatother
+\newpage
+
+\newcommand{\scalar}[2]{\left<#1,#2\right>}
+\newcommand{\sgn}[1]{\textrm{sgn}\left(#1\right)}
+\newcommand{\conv }[0]{\textrm{conv}}
+    
+\tableofcontents
+\newpage
+    
+    %---------------------------------------------------------------------------------
+    \section{Задание  8}
+    {\bf Постановка задачи}:
+    Исследовать 3 примера с аналитически рассчитанными опорными функциями: эллипс, квадрат, ромб. В каждом случае центр не обязательно нулевой~--- центр и полуоси являются параметрами. Вывести формулы опорных функций для указанных случаев в зависимости от значений параметров.
+        \subsection {\bf Эллипс} 
+        \begin{enumerate}
+            
+            \item Эллипс с центром в точке $c = (x_0, y_0)$:
+            
+            Такой эллипс является множеством
+            \[E_0 = \left\{(x, y) \in \mathbb{R}^2 \left| \frac{(x - x_0)^2}{a^2} + \frac{(y - y_0)^2}{b^2} \right. \leqslant 1\right\}.
+            \] 
+            Представим его как эллипс с центром в точке (0, 0)~--- множество $E_1$, сдвинутый на радиус-вектор точки центра $c$:
+            \[
+            E_0 =  E_1 + c.
+            \]
+            При этом множество $E_1$, описывающее несмещенный эллипс с центром в $(0, 0)$, имеет вид:
+            \[E_1 = \left\{(x, y) \in \mathbb{R}^2 \left| \frac{x^2}{a^2} + \frac{y^2}{b^2} \right. \leqslant 1\right\}.
+            \] 
+            Представим его в виде $E_1 = TB_1(0)$, где 
+            \[
+            T = \begin{bmatrix} a & 0 \\ 0 & b \end{bmatrix}.
+            \]
+            Тогда опорная функция несмещённого эллипса имеет вид:
+            \[\rho\left.( l\right|E_1) = \sqrt{a^2\cdot l_1^2 + b^2\cdot l_2^2} .
+            \]
+            Итоговая формула опорной функции для изначального эллипса:
+            \[\rho( l \left| E_0\right.) = \rho( l \left| E_1\right. + c) = \sqrt{a^2\cdot l_1^2 + b^2\cdot l_2^2} + \langle l, c\rangle. 
+            \]
+            
+            \item Эллипс с центром в точке $c = (x_0, y_0)$, главная полуось которого составляет с осью $Ox$ угол $\alpha$:
+            
+            Такой эллипс является множеством:
+            \[
+            E_2 = \left\{(x, y) \in \mathbb{R}^2 \left| \frac{(x'- x_0) ^2}{a^2} + \frac{(y'-y_0)^2}{b^2} \right.\leqslant 1\right\}.
+            \] 
+            Представим его как эллипс с центром в точке (0,0), главная полуось которого составляет с осью $Ox$ угол $\alpha$~--- множество $E_3$, сдвинутый на радиус-вектор точки центра $c$ :
+            \[
+            E_2 =  E_3 + c.
+            \]
+            При этом несмещённый повернутый эллипс с цетром в (0,0) имеет вид:
+            \[
+            E_3 = \left\{(x, y) \in \mathbb{R}^2 \left| \frac{(x')^2}{a^2} + \frac{(y')^2}{b^2} \right.\leqslant 1\right\},
+            \] 
+            где $x'$, $y'$~--- координаты, в которых полуось эллипса лежит на прямой $Ox$:
+            \[\begin{cases}
+            x'   = x\cos\alpha - y\sin\alpha,  
+            \\
+            y'   = x\sin\alpha + y\cos\alpha. 
+            \end{cases}
+            \]
+            \\
+            Из преобразованных координат получаем матрицу поворота:
+            \[
+            C = \begin{bmatrix} \cos\alpha & -\sin\alpha 
+            \\ \sin\alpha & \cos\alpha \end{bmatrix}.
+            \]
+            Матрица коэффциентов имеет вид
+            \[
+            T^2 = \begin{bmatrix} a^2 & 0 \\ 0 & b^2 \end{bmatrix}.
+            \]
+            Введем матрицу конфигурации $P = C'\cdot T^2\cdot C$. \\
+            Тогда имеем, что $E_3 = C\cdot T\cdot B_1(0)$, где $B_1(0)$~--- это единичный шар.
+            Получаем, что опорная функция для $E_3$ имеет вид:
+            \[
+            \rho( l \left| E_3\right.) = \sqrt{\langle TC'l, TC'l\rangle } =  \sqrt{\langle l,Pl\rangle }.
+            \]
+            
+            Итоговая формула опорной функции для изначального эллипса: 
+            
+            \[\rho( l \left| E_2\right.) = \rho( l \left| E_3\right. + c) = \sqrt{\langle l,Pl\rangle } + \langle l, c\rangle.
+            \]
+            
+        \end{enumerate}
+	
+	\subsection {\bf Квадрат} 
+        \begin{enumerate}
+            \item Квадрат с центром в точке $a = (x_0, y_0)$ и стороной длины $c$:
+            
+            Такой квадрат является множеством $E_0$, где 
+            \[
+            E_0 = \left\{(x, y) \in \left.\mathbb{R}^2 \right|\max(|x-x_0|,|y - y_0|) \leqslant c/2\right\}.
+            \] 
+            
+            Воспользуемся свойствами аддитивности по второму аргументу и положительной однородности для опорной функции. Для этого представим наш квадрат как композицию гомотетии с центром в (0,0) и коэффициентом $\frac{c}{2}$ и параллельного переноса на вектор $a$ квадрата с центром в (0,0), сторонами, равными $2$ и параллельными осям координат. Имеем:
+            
+            \[
+            E_0 = E_1\cdot  \frac{c}{2} + a,
+            \]
+            
+            где 
+            
+            \[
+            E_1 = \left\{(x, y) \in \left. \mathbb{R}^2 \right| \max(|x|,|y|) \leqslant 1\right\}.
+            \] 
+            
+            Опорная функция для $E_1$ имеет вид:
+            \[\rho( l \left| E_1\right.) = \sup_{a \in E_1}\langle l, a\rangle  \text{ } = \sup_{a \in E_1} \sum_{i=1}^2 l_i a_i\leqslant \sup_{a \in E_1}\sum_{i = 1}^2 |l_i|\cdot |a_i| \leqslant |l_1| + |l_2|.
+            \]
+            
+
+            Заметим, что равенство достигается, например, при $a$ = (sgn($l_1$), sgn($l_2$)). В этом случае функция примет вид:
+            
+            \[
+            \rho( l \left| E_1\right.) = |l_1| + |l_2|.
+            \]
+            
+            Исходя из аддитивности по второму аргументу и положительной однородности опорной функции, итоговая формула опорной функции для изначального множества $E_0$:
+            \[
+            \rho( l \left| E_0\right.) = \rho( l \left| E_1\cdot \right. \frac{c}{2} + a) = \frac{c}{2}\cdot (|l_1| + |l_2|) + \langle l, a\rangle  = c\cdot \frac{|l_1| + |l_2|}{2} + \langle l, a\rangle.
+            \]
+       \end{enumerate}
+    
+        \subsection {\bf Ромб} 
+        \begin{enumerate}
+            \item Ромб с центром в точке $c = (x_0, y_0)$ и диагоналями $a$, $b$: 
+            
+            Такой ромб является множеством
+            
+            \[
+            E_0 = \left\{(x, y) \in  \mathbb{R}^2 \left| \frac{2|x - x_0|}{a}+\frac{2|y - y_0|}{b}\right. \leqslant 1 \right\}.
+            \] 
+            Представим его как единичный ромб с центром в точке (0,0)~--- множество $E_1$~--- с измененными диагоналями и сдвинутым центром на радиус вектор точки $c$:
+            
+            \[
+            E_0 = T\cdot  E_1 + c,
+            \]
+            где 
+            \[
+            T = \begin{bmatrix} a & 0 \\ 0 & b \end{bmatrix},
+            \]
+        
+            \[
+            E_1 = \left\{(x, y) \in \left. \mathbb{R}^2 \right| |x|+|y| \leqslant 1\right\}.
+            \] 
+            Опорная функция для $E_1$ имеет вид:
+            
+            \[
+            \rho( l \left| E_1\right.) = \sup_{a \in E_1}\langle l, a\rangle.
+            \]
+            Тогда итоговая опорная функция для изначального ромба имеет вид:
+            \begin{equation}\label{eq:ref}
+                \rho( l \left| E_0\right.) = \rho( l | T\cdot  E_1 + c) = \sup_{a \in E_1}\langle l, a\rangle + \langle l, c\rangle  = \max(|a\cdot  l_1|, |b\cdot  l_2|) + \langle l, c\rangle. 
+            \end{equation}
+            
+       \end{enumerate}
+       
+    
+\newpage
+    %---------------------------------------------------------------------------------
+    \section{Задание 10}
+    {\bf Постановка задачи}:
+    Выписать вывод уравнений, описывающих  поляру для ромба.
+    \begin{definition}\label{polarn}
+    Полярой множества $A \subset \mathbb{R}^d$ называется множество (\cite[c.~53--54]{lokucievskii})
+        \begin{equation}
+            A^{\circ} = \left\{ p \in \left.\mathbb{R}^{d} \right| \forall x \in A: \langle p, x\rangle  \leqslant 1 \right\}.
+        \end{equation}
+    \end{definition}
+    \begin{definition}\label{5000}
+    Полярой множества $A \subset \mathbb{R}^2$ называется множество \cite[c.~29--30]{korobkov}
+        \begin{equation}
+        A^{\circ} = \left\{ p \in \left.\mathbb{R}^2 \right| \rho (p \left| A\right.) \leqslant 1 \right\}. 
+        \end{equation}
+    \end{definition}
+	\begin{statement}
+	Определения \ref{polarn} и \ref{5000} эквивалентны для множества $A \subset \mathbb{R}^2$.
+	\end{statement}
+    
+    \subsection{{\bf Ромб}}
+        Ромб с диагоналями $a, b$ и цетром в точке $c = (x_0, y_0)$ является множеством
+        \[
+        A = \left\{(x, y) \in \mathbb{R}^2 \left| \frac{2|x - x_0|}{a}\right.+\frac{2|y - y_0|}{b} \leqslant 1 \right\} 
+        \]
+        Ромб также является выпуклой оболочкой, т.о.
+        \[
+        A = \conv \left\{(x_0 + a/2, y_0), (x_0 - a/2, y+0), (x_0, y_0 + b/2), (x_0, y_0 - b/2)\right\}.
+        \] 
+        Опорная функция этого множества имеет вид (по формуле (\ref{eq:ref})):
+        \[
+        \rho( l \left| A\right.) = \max(\|a\cdot l_1\|, \|b\cdot l_2\|) + \langle l, c\rangle = \max(\|a\cdot l_1\|, \|b\cdot l_2\|) + l_1\cdot x_0 + l_2\cdot y_0,
+        \] 
+        где $c$ - радиус-вектор точки центра.
+        \\
+        Полярой множества $A$ является множество $A^{\circ}$, при этом
+        \[
+        A^{\circ} = \conv \left\{(x_0 + a/2, y_0), (x_0 - a/2, y+0), (x_0, y_0 + b/2), (x_0, y_0 - b/2)\right\}^{\circ}. 
+        \]
+        Воспользуемся тем, что: $(\conv (A))^{\circ} = A^{\circ}$ \cite[c.~53--54]{lokucievskii}, получим:
+        
+        \[
+        A^{\circ} = \left\{(x_0 + a/2, y_0), (x_0 - a/2, y+0), (x_0, y_0 + b/2), (x_0, y_0 - b/2)\right\}^{\circ}. 
+        \] 
+        
+        Далее, из свойства $(\cup A_i)^{\circ} = \cap A_i^{\circ}$ \cite[c.~29--30]{korobkov}, имеем: 
+        
+        $E^{\circ} = \left\{l \in \mathbb{R}^2 \left| 
+         \begin{cases}
+        l_1\cdot (x_0 \pm a/2) + l_2\cdot y_0 \leqslant 1 \\
+        l_1\cdot x_0 + l_2\cdot (y_0 \pm b/2) \leqslant 1 
+         \end{cases}\right. \right\}. $
+         
+        Заметим, что по определению \ref{5000}, можно записать поляру через опорную функцию:
+        
+        \[
+        A^{\circ} = \left\{l \in \left. \mathbb{R}^2 \right| \max(\|a\cdot l_1\|, \|b\cdot l_2\|) + l_1\cdot x_0 + l_2\cdot y_0 \leqslant 1 \right\}.
+        \]
+    
+    \newpage
+     %---------------------------------------------------------------------------------
+\begin{thebibliography}{}
+    
+    \bibitem{rockafellar} Рокафеллар~Р. Выпуклый анализ. Москва, изд.~МИР, 1973 г. 
+    
+    \bibitem{lokucievskii} Локуциевский~Л.~В. Элементы конечномерного выпуклого
+    анализа. Конспект Лекций. Мехмат МГУ, 2017. (\url{https://kafedra-opu.ru/sites/default/files/main_courses/ca_lokutsievskiy_0.pdf})
+    
+    \bibitem{korobkov}  Коробков~М.~В. Конспект лекций. ММФ НГУ, 2016. (\url{http://phys.nsu.ru/korobkov/f_an_16-17/Topos-lecture_notes_2016-17.pdf})
+    
+    \end{thebibliography}
+    
+\end{document}
