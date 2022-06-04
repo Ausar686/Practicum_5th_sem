@@ -1,0 +1,31 @@
+function compareInterp(grid, smallGrid, functionHandle)
+tiledlayout(2,2);
+valuesNearest = interp1(grid, functionHandle(grid), smallGrid, 'nearest');
+valuesLinear = interp1(grid, functionHandle(grid), smallGrid, 'linear');
+valuesSpline = interp1(grid, functionHandle(grid), smallGrid, 'spline');
+valuesPchip = interp1(grid, functionHandle(grid), smallGrid, 'pchip');
+tile1 = nexttile;
+plot(tile1, smallGrid, valuesNearest, smallGrid, functionHandle(smallGrid));
+xlabel("Значение аргумента");
+ylabel("Значение функции");
+title("Nearest-экстраполирование");
+legend("Nearest-значения", "Реальные значения");
+tile2 = nexttile;
+plot(tile2, smallGrid, valuesLinear, smallGrid, functionHandle(smallGrid));
+xlabel("Значение аргумента");
+ylabel("Значение функции");
+title("Linear-экстраполирование");
+legend("Linear-значения", "Реальные значения");
+tile3 = nexttile;
+plot(tile3, smallGrid, valuesSpline, smallGrid, functionHandle(smallGrid));
+xlabel("Значение аргумента");
+ylabel("Значение функции");
+title("Spline-экстраполирование");
+legend("Spline-значения", "Реальные значения");
+tile4 = nexttile;
+plot(tile4, smallGrid, valuesPchip, smallGrid, functionHandle(smallGrid));
+xlabel("Значение аргумента");
+ylabel("Значение функции");
+title("Pchip-экстраполирование");
+legend("Pchip-значения", "Реальные значения");
+end
