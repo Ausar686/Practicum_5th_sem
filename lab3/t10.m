@@ -53,7 +53,7 @@ function res = plotFT(hFigure, fHandle, fFTHandle, step, inpLimVec, outLimVec)
         c = hFigure.Children.XLim(1);
         d = hFigure.Children.XLim(2);
     else
-        % частота Найквиста
+        % С‡Р°СЃС‚РѕС‚Р° РќР°Р№РєРІРёСЃС‚Р°
         c = -1/(2*step);
         d = 1/(2*step); 
     end
@@ -126,11 +126,11 @@ function res = plotFT(hFigure, fHandle, fFTHandle, step, inpLimVec, outLimVec)
         plot (xf, im_f, 'b', 'Parent', im_ax)
         real_ax.YLim = [-max([re_y re_f]) max([re_y re_f])*1.2];
         im_ax.YLim = [min([im_y im_f])*1.2 max([im_y im_f])*1.2];
-        legend ('Численное решение','Аналитическое решение');
+        legend ('Р§РёСЃР»РµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ','РђРЅР°Р»РёС‚РёС‡РµСЃРєРѕРµ СЂРµС€РµРЅРёРµ');
     else 
         real_ax.YLim = [min(re_y) - abs(min(re_y)) max(re_y)];
         im_ax.YLim = [min(im_y) - abs(min(im_y)) max(im_y)];
-        legend ('Численное решение')
+        legend ('Р§РёСЃР»РµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ')
     end
     real_ax.XLim = [c d];
     im_ax.XLim = [c d];
@@ -139,8 +139,8 @@ function res = plotFT(hFigure, fHandle, fFTHandle, step, inpLimVec, outLimVec)
     im_ax.XLabel.String = '\lambda';
     im_ax.YLabel.String = 'Im(F(\lambda))';
     real_ax.YLabel.String = 'Re(F(\lambda))';
-    real_ax.Title.String = 'Вещественная часть';
-    im_ax.Title.String =  'Мнимая часть';
+    real_ax.Title.String = 'Р’РµС‰РµСЃС‚РІРµРЅРЅР°СЏ С‡Р°СЃС‚СЊ';
+    im_ax.Title.String =  'РњРЅРёРјР°СЏ С‡Р°СЃС‚СЊ';
     SPlotInfo = struct('ax_handles', [real_ax im_ax], 'outLimVec', [a b], 'inpLimVec', [c d], 'nPoints', n);
     hold off;
     set(hFigure,'UserData',SPlotInfo);
@@ -150,12 +150,12 @@ end
 
 function f = ftfunc1 (t)
     f = (2 .* pi) .* exp((-1 - 2.*i).*t) .* (((2 + i) .* exp(2.*t).*(t<0)) + (2 - i) .*(t>0));
-    % ПФ ф-ии func1
+    % РџР¤ С„-РёРё func1
 end
 
 function f = ftfunc3 (t)
     f = 1./64.*sqrt(pi/2).*exp(-(t - i).^2./8).*(1 + i.*t).*(-13+t.*(t - 2.*i));
-    % ПФ ф-ии func1
+    % РџР¤ С„-РёРё func1
 end
 
 
@@ -166,7 +166,7 @@ end
 
 function f = ftfunc2 (t)
     f = (exp(i.*t) - exp(-i.*t))./(i.*t) + (1 + 2./(i.*t)).*(exp(-i.*t).*(i.*t +1) - exp(i.*t).*(1-i.*t))./t.^2;
-    % ПФ ф-ии func2
+    % РџР¤ С„-РёРё func2
 end
 
 function f = dirac (t)
