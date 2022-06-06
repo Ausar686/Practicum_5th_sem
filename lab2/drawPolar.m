@@ -48,11 +48,11 @@ for i = 1:N
         v0x = v_x;
         v0y = v_y;
     end
-    t = C * t'; %поворот на угол alpha
+    t = C * t'; %РїРѕРІРѕСЂРѕС‚ РЅР° СѓРіРѕР» alpha
     t = t';
     params.t = t;
 end
-line([v_0x, v_x], [v_0y, v_y], 'Color', 'red'); % соединили конец с началом
+line([v_0x, v_x], [v_0y, v_y], 'Color', 'red'); % СЃРѕРµРґРёРЅРёР»Рё РєРѕРЅРµС† СЃ РЅР°С‡Р°Р»РѕРј
 k = convhull(polar);
 array = polar(k, :);
 patch(array(:,1), array(:,2), 'blue');
