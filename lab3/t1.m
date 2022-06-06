@@ -14,18 +14,18 @@ hold on
 [x1, y1] = ginput(n);
 disp(x1);
 for i=1:size(x1, 1)
-    str = strcat ('-------------- решение № ', num2str(i));
+    str = strcat ('-------------- СЂРµС€РµРЅРёРµ в„– ', num2str(i));
     disp(str)
     answ = fzero (f, x1(i));
     plot(answ, f1(answ), 'b*')
-    str = strcat('Корень x = ', num2str(answ));
+    str = strcat('РљРѕСЂРµРЅСЊ x = ', num2str(answ));
     str = strcat(str, ", y = ");
     str = strcat(str, num2str(f1(answ)));
     disp(str)
-    str = strcat ('Невязка = ', abs(num2str(f2(answ) - f1(answ))));
+    str = strcat ('РќРµРІСЏР·РєР° = ', abs(num2str(f2(answ) - f1(answ))));
     disp(str)
 end
 
-legend('y = cos(x)', 'y = x/\pi', 'Корни')
+legend('y = cos(x)', 'y = x/\pi', 'РљРѕСЂРЅРё')
 hold off;
 clear;
