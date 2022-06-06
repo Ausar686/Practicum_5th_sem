@@ -35,22 +35,22 @@ valuesGoodLinear = interp1(gridLinear, linearFunction(gridLinear), smallGridLine
 tiledlayout(3,2);
 tile1 = nexttile;
 plot(tile1, smallGridNearest, antiNearestFunction(smallGridNearest), smallGridNearest, valuesBadNearest);
-legend("x^2", "Nearest-интерполяция");
+legend("x^2", "Nearest-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 tile2 = nexttile;
 plot(tile2, smallGridLinear, antiLinearFunction(smallGridLinear), smallGridLinear, valuesBadLinear);
-legend("sin(200pi * x)", "Linear-интерполяция");
+legend("sin(200pi * x)", "Linear-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 tile3 = nexttile;
 plot(tile3, smallGridSpline, antiSplineFunction(smallGridSpline), smallGridSpline, valuesBadSpline);
-legend("sin(20pi * x)", "Spline-интерполяция");
+legend("sin(20pi * x)", "Spline-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 tile4 = nexttile;
 plot(tile4, smallGridPchip, antiPchipFunction(smallGridPchip), smallGridPchip, valuesBadPchip);
-legend("sin(10pi * x)", "Pchip-интерполяция");
+legend("sin(10pi * x)", "Pchip-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 tile5 = nexttile;
 plot(tile5, goodSmallGridNearest, nearestFunction(goodSmallGridNearest), goodSmallGridNearest, valuesGoodNearest);
-legend("round(x)", "Nearest-интерполяция");
+legend("round(x)", "Nearest-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 tile6 = nexttile;
 plot(tile6, smallGridLinear, linearFunction(smallGridLinear), smallGridLinear, valuesGoodLinear);
-legend("x^3", "Linear-интерполяция");
+legend("x^3", "Linear-РёРЅС‚РµСЂРїРѕР»СЏС†РёСЏ");
 clear;
 %% TASK 3
 clc;
@@ -61,22 +61,22 @@ maxAbsDerivative2Bad = 10000 .* (pi .^ 2);
 grid = linspace(0, 1, 11);
 smallGrid = linspace(0, 1, 101);
 absDifferenceGood = abs(functionGood(smallGrid) - interp1(grid, functionGood(grid), smallGrid));
-absDifferenceBad = abs(functionBad(smallGrid) - interp1(grid, functionBad(grid), smallGrid)); % Тут везде нули
+absDifferenceBad = abs(functionBad(smallGrid) - interp1(grid, functionBad(grid), smallGrid)); % РўСѓС‚ РІРµР·РґРµ РЅСѓР»Рё
 maxSupposedDifferenceGood = repmat(maxAbsDerivative2Good .* (grid(2) .^ 2) ./ 8, [1, size(smallGrid, 2)]);
-maxSupposedDifferenceBad = repmat(maxAbsDerivative2Bad .* (grid(2) .^ 2) ./ 8, [1, size(smallGrid, 2)]); % Тут тоже везде нули
+maxSupposedDifferenceBad = repmat(maxAbsDerivative2Bad .* (grid(2) .^ 2) ./ 8, [1, size(smallGrid, 2)]); % РўСѓС‚ С‚РѕР¶Рµ РІРµР·РґРµ РЅСѓР»Рё
 tiledlayout(1, 2);
 tile1 = nexttile;
 plot(tile1, smallGrid, absDifferenceGood, smallGrid, maxSupposedDifferenceGood);
-title("Модуль отклонения для y = sin(10pi * x)");
-xlabel("Значение переменной");
-ylabel("Абсолютная величина отклонения");
-legend("Реальный результат", "Априорный результат");
+title("РњРѕРґСѓР»СЊ РѕС‚РєР»РѕРЅРµРЅРёСЏ РґР»СЏ y = sin(10pi * x)");
+xlabel("Р—РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№");
+ylabel("РђР±СЃРѕР»СЋС‚РЅР°СЏ РІРµР»РёС‡РёРЅР° РѕС‚РєР»РѕРЅРµРЅРёСЏ");
+legend("Р РµР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚", "РђРїСЂРёРѕСЂРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚");
 tile2 = nexttile;
 plot(tile2, smallGrid, absDifferenceBad, smallGrid, maxSupposedDifferenceBad);
-title("Модуль отклонения для y = sin(100pi * x)");
-xlabel("Значение переменной");
-ylabel("Абсолютная величина отклонения");
-legend("Реальный результат", "Априорный результат");
+title("РњРѕРґСѓР»СЊ РѕС‚РєР»РѕРЅРµРЅРёСЏ РґР»СЏ y = sin(100pi * x)");
+xlabel("Р—РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№");
+ylabel("РђР±СЃРѕР»СЋС‚РЅР°СЏ РІРµР»РёС‡РёРЅР° РѕС‚РєР»РѕРЅРµРЅРёСЏ");
+legend("Р РµР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚", "РђРїСЂРёРѕСЂРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚");
 clear;
 %% TASK 4
 clc;
@@ -144,10 +144,10 @@ if ~isempty(minIdxRight)
     distRight = min(minsX(minIdxRight) - xMax);
 end
 if (distLeft < 0) && (distRight < 0)
-    %Никуда не летим
+    %РќРёРєСѓРґР° РЅРµ Р»РµС‚РёРј
     disp('NO MINIMUM SPOTTED');
 elseif (distLeft < 0) || (distLeft >= distRight && distRight > 0)
-    %Летим вправо
+    %Р›РµС‚РёРј РІРїСЂР°РІРѕ
     minXRight = minsX(minIdxRight);
     xEndIdx = find(minXRight == xMax + distRight);
     xEnd = minXRight(xEndIdx);
@@ -160,7 +160,7 @@ elseif (distLeft < 0) || (distLeft >= distRight && distRight > 0)
     comet(xWay, yWay);
     hold off;
 elseif (distRight < 0) || (distRight > distLeft && distLeft > 0)
-    %Летим влево
+    %Р›РµС‚РёРј РІР»РµРІРѕ
     minXLeft = minsX(minIdxLeft);
     xEndIdx = find(minXLeft == xMax - distLeft);
     xEnd = minXLeft(xEndIdx);
@@ -182,7 +182,7 @@ getEqual(@(t) sin(t), @(t) cos(2*t), 0, 10, 30);
 clear;
 %% TASK 8
 clc;
-%Эллипс с центром в (0, 0) и полуосями 5 и 4
+%Р­Р»Р»РёРїСЃ СЃ С†РµРЅС‚СЂРѕРј РІ (0, 0) Рё РїРѕР»СѓРѕСЃСЏРјРё 5 Рё 4
 x0 = [0, 0];
 a1 = 5;
 a2 = 4;
@@ -195,13 +195,13 @@ lb = [];
 ub = [];
 N = 15;
 drawSet(supportLebesgue(f, x0, A, b, Aeq, beq, lb, ub), N);
-%Квадрат с центром в (0, 0) и сторонами, равными 2, и параллельными Oxy
+%РљРІР°РґСЂР°С‚ СЃ С†РµРЅС‚СЂРѕРј РІ (0, 0) Рё СЃС‚РѕСЂРѕРЅР°РјРё, СЂР°РІРЅС‹РјРё 2, Рё РїР°СЂР°Р»Р»РµР»СЊРЅС‹РјРё Oxy
 g = @(x) 0;
 lb = [-1, -1];
 ub = [1, 1];
 N = 100;
 drawSet(supportLebesgue(g, x0, A, b, Aeq, beq, lb, ub), N);
-%Ромб с центром в (0, 0) и полуосями 4 и 3, параллельными Oxy
+%Р РѕРјР± СЃ С†РµРЅС‚СЂРѕРј РІ (0, 0) Рё РїРѕР»СѓРѕСЃСЏРјРё 4 Рё 3, РїР°СЂР°Р»Р»РµР»СЊРЅС‹РјРё Oxy
 a1 = 4;
 a2 = 3;
 nDots = @(x) abs(x(1)) / a1 + abs(x(2)) / a2 - 1;
@@ -212,8 +212,8 @@ drawSet(supportLebesgue(nDots, x0, A, b, Aeq, beq, lb, ub), N);
 clear;
 %% TASK 9
 clc;
-f = @(x) x(1)^2 + x(2)^2 - 1; % f(x) <= 0 - единичный круг с центром в нуле
-x0 = [0, 0]; % начальная точка в центре круга, точке (0, 0)
+f = @(x) x(1)^2 + x(2)^2 - 1; % f(x) <= 0 - РµРґРёРЅРёС‡РЅС‹Р№ РєСЂСѓРі СЃ С†РµРЅС‚СЂРѕРј РІ РЅСѓР»Рµ
+x0 = [0, 0]; % РЅР°С‡Р°Р»СЊРЅР°СЏ С‚РѕС‡РєР° РІ С†РµРЅС‚СЂРµ РєСЂСѓРіР°, С‚РѕС‡РєРµ (0, 0)
 A = [];
 b = [];
 Aeq = [];
@@ -252,7 +252,7 @@ y = linspace(a, b, nDots);
 Z = sin(X) + cos(Y);
 C = Z;
 contour(X, Y, Z, nLevels);
-title('Линии уровня');
+title('Р›РёРЅРёРё СѓСЂРѕРІРЅСЏ');
 colorbar;
 
 fig = figure;
@@ -260,14 +260,14 @@ surface = surf(X,Y,Z,C);
 colorbar;
 hold on;
 
-zMax = Z(2:nDots-1, 2:nDots-1) > Z(2:nDots-1, 1:nDots-2); % точка слева 
-zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(1:nDots-2, 2:nDots-1)); % точка сверху
-zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(2:nDots-1, 3:nDots)); % точка справа
-zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(3:nDots, 2:nDots-1)); % точка снизу
-zMin = Z(2:nDots-1, 2:nDots-1) < Z(2:nDots-1, 1:nDots-2); % точка слева
-zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(1:nDots-2, 2:nDots-1)); % точка сверху
-zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(2:nDots-1, 3:nDots)); % точка справа
-zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(3:nDots, 2:nDots-1)); % точка снизу
+zMax = Z(2:nDots-1, 2:nDots-1) > Z(2:nDots-1, 1:nDots-2); % С‚РѕС‡РєР° СЃР»РµРІР° 
+zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(1:nDots-2, 2:nDots-1)); % С‚РѕС‡РєР° СЃРІРµСЂС…Сѓ
+zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(2:nDots-1, 3:nDots)); % С‚РѕС‡РєР° СЃРїСЂР°РІР°
+zMax = zMax & (Z(2:nDots-1, 2:nDots-1) > Z(3:nDots, 2:nDots-1)); % С‚РѕС‡РєР° СЃРЅРёР·Сѓ
+zMin = Z(2:nDots-1, 2:nDots-1) < Z(2:nDots-1, 1:nDots-2); % С‚РѕС‡РєР° СЃР»РµРІР°
+zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(1:nDots-2, 2:nDots-1)); % С‚РѕС‡РєР° СЃРІРµСЂС…Сѓ
+zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(2:nDots-1, 3:nDots)); % С‚РѕС‡РєР° СЃРїСЂР°РІР°
+zMin = zMin & (Z(2:nDots-1, 2:nDots-1) < Z(3:nDots, 2:nDots-1)); % С‚РѕС‡РєР° СЃРЅРёР·Сѓ
 [iMin, jMin] = find(zMin);
 [iMax, jMax] = find(zMax);
 iMax = iMax + 1;
@@ -284,24 +284,24 @@ for i = 1:n
     M(j) = getframe(fig);
     surface.ZData = sin(X + delta) + cos(Y + delta);
     surface.CData = surface.ZData;
-    %Ищем индексы максимумов
-    zMax = surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(2:nDots-1, 1:nDots-2); % точка слева
-    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(1:nDots-2, 2:nDots-1)); %  точка сверху
-    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(2:nDots-1, 3:nDots)); % точка справа
-    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(3:nDots, 2:nDots-1)); % точка снизу
+    %РС‰РµРј РёРЅРґРµРєСЃС‹ РјР°РєСЃРёРјСѓРјРѕРІ
+    zMax = surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(2:nDots-1, 1:nDots-2); % С‚РѕС‡РєР° СЃР»РµРІР°
+    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(1:nDots-2, 2:nDots-1)); %  С‚РѕС‡РєР° СЃРІРµСЂС…Сѓ
+    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(2:nDots-1, 3:nDots)); % С‚РѕС‡РєР° СЃРїСЂР°РІР°
+    zMax = zMax & (surface.ZData(2:nDots-1, 2:nDots-1) > surface.ZData(3:nDots, 2:nDots-1)); % С‚РѕС‡РєР° СЃРЅРёР·Сѓ
     [iMax, jMax] = find(zMax);
-    %Ищем индексы минимумов
-    zMin = surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(2:nDots-1, 1:nDots-2); % точка слева
-    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(1:nDots-2, 2:nDots-1)); % точка сверху
-    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(2:nDots-1, 3:nDots)); % точка справа
-    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(3:nDots, 2:nDots-1)); % точка снизу
+    %РС‰РµРј РёРЅРґРµРєСЃС‹ РјРёРЅРёРјСѓРјРѕРІ
+    zMin = surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(2:nDots-1, 1:nDots-2); % С‚РѕС‡РєР° СЃР»РµРІР°
+    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(1:nDots-2, 2:nDots-1)); % С‚РѕС‡РєР° СЃРІРµСЂС…Сѓ
+    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(2:nDots-1, 3:nDots)); % С‚РѕС‡РєР° СЃРїСЂР°РІР°
+    zMin = zMin & (surface.ZData(2:nDots-1, 2:nDots-1) < surface.ZData(3:nDots, 2:nDots-1)); % С‚РѕС‡РєР° СЃРЅРёР·Сѓ
     [iMin, jMin] = find(zMin);
-    % Начинали с отступом, так что нужно вернуться к старым индексам
+    % РќР°С‡РёРЅР°Р»Рё СЃ РѕС‚СЃС‚СѓРїРѕРј, С‚Р°Рє С‡С‚Рѕ РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊСЃСЏ Рє СЃС‚Р°СЂС‹Рј РёРЅРґРµРєСЃР°Рј
     iMax = iMax + 1; 
     jMax = jMax + 1;
     iMin = iMin + 1;
     jMin = jMin + 1;
-    %Находим координаты супремумов
+    %РќР°С…РѕРґРёРј РєРѕРѕСЂРґРёРЅР°С‚С‹ СЃСѓРїСЂРµРјСѓРјРѕРІ
     pointsMax.XData = diag(surface.XData(iMax, jMax));
     pointsMax.YData = diag(surface.YData(iMax, jMax));
     pointsMax.ZData = diag(surface.ZData(iMax, jMax)); 
@@ -311,7 +311,7 @@ for i = 1:n
     
     drawnow;
     delta = delta + 0.04;
-    title('Анимация z = cos(x + \deltat) + sin(y - \deltat)');
+    title('РђРЅРёРјР°С†РёСЏ z = cos(x + \deltat) + sin(y - \deltat)');
 end
 video = VideoWriter('Animation');
 video.FrameRate = 60;
