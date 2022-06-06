@@ -16,10 +16,10 @@ if strcmp(meth, 'Trigonometry')
         b_i = (2 ./ len) .* trapz(x, y .* g_i(x));
         y_i = y_i + a_i .* f_i(x) + b_i .* g_i(x);
         plot(x, y, x, y_i);
-        legend('f(x)', 'i-ая частичная сумма ряда');
+        legend('f(x)', 'i-Р°СЏ С‡Р°СЃС‚РёС‡РЅР°СЏ СЃСѓРјРјР° СЂСЏРґР°');
         xlabel('x');
         ylabel('y');
-        title('Тригонометрическая система функций');
+        title('РўСЂРёРіРѕРЅРѕРјРµС‚СЂРёС‡РµСЃРєР°СЏ СЃРёСЃС‚РµРјР° С„СѓРЅРєС†РёР№');
         mov(i) = getframe();
     end
 end
@@ -33,10 +33,10 @@ if strcmp(meth, 'Chebyshev')
         c_i = 2 ./ pi .* trapz(x_tmp, y_tmp);
         y_i = y_i + c_i .* f_i(x_tmp);
         plot(x, y, x, y_i);
-        legend('f(x)', 'i-ая частичная сумма ряда');
+        legend('f(x)', 'i-Р°СЏ С‡Р°СЃС‚РёС‡РЅР°СЏ СЃСѓРјРјР° СЂСЏРґР°');
         xlabel('x');
         ylabel('y');
-        title('Система функций Чебышёва');
+        title('РЎРёСЃС‚РµРјР° С„СѓРЅРєС†РёР№ Р§РµР±С‹С€С‘РІР°');
         mov(i) = getframe();
     end
 end
@@ -49,10 +49,10 @@ if strcmp(meth, 'Legendre')
         c_i = (2 * i + 1) ./ 2 .* trapz(xBase, y_tmp); 
         y_i = y_i + c_i .* f_i(xBase);
         plot(x, y, x, y_i);
-        legend('f(x)', 'i-ая частичная сумма ряда');
+        legend('f(x)', 'i-Р°СЏ С‡Р°СЃС‚РёС‡РЅР°СЏ СЃСѓРјРјР° СЂСЏРґР°');
         xlabel('x');
         ylabel('y');
-        title('Система функций Лежандра');
+        title('РЎРёСЃС‚РµРјР° С„СѓРЅРєС†РёР№ Р›РµР¶Р°РЅРґСЂР°');
         mov(i) = getframe();
     end
 end
