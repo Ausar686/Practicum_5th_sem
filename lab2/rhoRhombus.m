@@ -1,5 +1,5 @@
 function [res] = rhoRhombus(params) 
-% c - точка центра
+% c - С‚РѕС‡РєР° С†РµРЅС‚СЂР°
 a = params.a/2;
 b = params.b/2;
 c = params.c; 
