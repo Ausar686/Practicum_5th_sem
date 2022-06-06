@@ -9,11 +9,11 @@ solinit = bvpinit(xmesh, [-1 2]);
 sol = bvp4c(@bvpfcn, @bcfcn, solinit);
 figure(2)
 plot(sol.x, sol.y(1,:), '-*', xmesh, analyt(xmesh))
-legend('численное решение', 'аналитическое решение')
+legend('С‡РёСЃР»РµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ', 'Р°РЅР°Р»РёС‚РёС‡РµСЃРєРѕРµ СЂРµС€РµРЅРёРµ')
 
-disp('Норма L2')
+disp('РќРѕСЂРјР° L2')
 trapz((abs(sol.y(1, :) - analyt(xmesh))).^2)^0.5
-disp('Норма С')
+disp('РќРѕСЂРјР° РЎ')
 max((abs(sol.y(1, :) - analyt(xmesh))).^2)
 
 clear;
@@ -22,7 +22,7 @@ function dydx = bvpfcn(x,y)
 dydx = [y(2) 2.*x-pi-y(1)];
 end
 
-% Краевые условия
+% РљСЂР°РµРІС‹Рµ СѓСЃР»РѕРІРёСЏ
 function res = bcfcn(ya,yb)
 res = [ya(1) yb(1)];
 end
