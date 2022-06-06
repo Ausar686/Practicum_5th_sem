@@ -7,7 +7,7 @@ y = linspace(lb, ub, nDots);
 z = linspace(lb, ub, nDots);
 [X, Y, Z] = meshgrid(x, y, z);
 if ((length(alphas) ~= length(colors)) || (length(alphas) ~= length(edges)))
-    error('Размеры не совпадают');
+    error('Р Р°Р·РјРµСЂС‹ РЅРµ СЃРѕРІРїР°РґР°СЋС‚');
 end
 
 for i = 1:length(alphas)
@@ -21,7 +21,7 @@ for i = 1:length(alphas)
     ball = isosurface(X,Y,Z,V,2);
     
     if (size(ball.vertices) == 0)
-        error('Таких точек нет!');
+        error('РўР°РєРёС… С‚РѕС‡РµРє РЅРµС‚!');
     end
     paintedBall = patch(ball);
     xlabel('x');
