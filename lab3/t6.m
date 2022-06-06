@@ -7,14 +7,14 @@ clear;
 
 function  SaveTurtle (var)
     minimum = @(action, vals) min(action + vals);
-    % импортируем данные
-    load('C:\Users\gleby\OneDrive\Документы\MATLAB\sem5\lab3\field','radiation', 'n', 'm');
+    % РёРјРїРѕСЂС‚РёСЂСѓРµРј РґР°РЅРЅС‹Рµ
+    load('C:\Users\gleby\OneDrive\Р”РѕРєСѓРјРµРЅС‚С‹\MATLAB\sem5\lab3\field','radiation', 'n', 'm');
     figure(1);
     ylim([0 m]); xlim([0 n]);
     xticks(1:n); yticks(1:m)
     hold on;
     
-    % Рисуем поле
+    % Р РёСЃСѓРµРј РїРѕР»Рµ
     Nmap = 10;
     cMin1 = [0 1 1];
     cMax1 = [1 1 0];
@@ -30,14 +30,14 @@ function  SaveTurtle (var)
     colormap(cMap1);
     colorbar('Ticks',0.05:0.1:1, 'TickLabels',{'1','2','3','4','5', '6','7','8','9','10'})
     
-    % таблички с весами
+    % С‚Р°Р±Р»РёС‡РєРё СЃ РІРµСЃР°РјРё
     radiation = radiation+1;
     V = 1*ones(n+2,m+2)*inf;
     up = 1*ones(n+2,m+2); 
     down = 1*ones(n+2,m+2);
     left = 1*ones(n+2,m+2);
     right = 1*ones(n+2,m+2);
-    % диагонали
+    % РґРёР°РіРѕРЅР°Р»Рё
     if var
         up_left = 1*ones(n+2,m+2); 
         up_right = 1*ones(n+2,m+2);
@@ -52,7 +52,7 @@ function  SaveTurtle (var)
             left(i+2, j+1) = radiation(i, j);
             right(i, j+1) = radiation(i, j);
             
-            % диагонали
+            % РґРёР°РіРѕРЅР°Р»Рё
             if var
                 up_right(i,j) = radiation(i, j);
                 up_left(i+2,j) = radiation(i, j);
@@ -123,7 +123,7 @@ function  SaveTurtle (var)
         iter_num = 1 + iter_num;
         size(find(change == 1))
     end
-    str = strcat('Количество итераций = ', num2str(iter_num));
+    str = strcat('РљРѕР»РёС‡РµСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№ = ', num2str(iter_num));
     disp(str)
     
     i = 2;
@@ -133,7 +133,7 @@ function  SaveTurtle (var)
     while (k < n*m)
         k = k+1;
         if (i == n)&&(j == m)
-            str = strcat('Количество шагов = ', num2str(k-1));
+            str = strcat('РљРѕР»РёС‡РµСЃС‚РІРѕ С€Р°РіРѕРІ = ', num2str(k-1));
             title (str);
             disp(str)
             break;
@@ -160,6 +160,6 @@ end
 
 function radiation = GenerateTable (n, m)
     radiation  = round(rand(n, m).*10);
-    %radiation  = round(ones(n, m).*0); %везде одинаковая радиация
-    save('C:\Users\gleby\OneDrive\Документы\MATLAB\sem5\lab3\field','radiation', 'n', 'm');
+    %radiation  = round(ones(n, m).*0); %РІРµР·РґРµ РѕРґРёРЅР°РєРѕРІР°СЏ СЂР°РґРёР°С†РёСЏ
+    save('C:\Users\gleby\OneDrive\Р”РѕРєСѓРјРµРЅС‚С‹\MATLAB\sem5\lab3\field','radiation', 'n', 'm');
 end
