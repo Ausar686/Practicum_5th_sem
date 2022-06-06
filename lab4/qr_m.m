@@ -1,8 +1,8 @@
 function [Q,R] = qr_m(A)
-    column = @takeColumn; % áåðåì ñòîëáåö
-    nCol = size(A,2); % êîëè÷åñòâî ñòîëáöîâ
-    b = zeros(nCol,nCol); % ìàòðèöà ñòîëáöîâ
-    c = zeros(1,nCol-1); % êîýôôèöèåíòû
+    column = @takeColumn; % Ð±ÐµÑ€ÐµÐ¼ ÑÑ‚Ð¾Ð»Ð±ÐµÑ†
+    nCol = size(A,2); % ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²
+    b = zeros(nCol,nCol); % Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð° ÑÑ‚Ð¾Ð»Ð±Ñ†Ð¾Ð²
+    c = zeros(1,nCol-1); % ÐºÐ¾ÑÑ„Ñ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚Ñ‹
     i = 1;
     rg = rank(A);
     if(norm(column(A,1)) > 10^(-5))
@@ -13,7 +13,7 @@ function [Q,R] = qr_m(A)
             j = i+1;
             b(:,j) = column(A,j)';
             for k=1:i
-                if(dot(column(b,k),column(b,k)) < 10^(-5)) % ñêàëÿðíîå ïðîèçâåäåíèå
+                if(dot(column(b,k),column(b,k)) < 10^(-5)) % ÑÐºÐ°Ð»ÑÑ€Ð½Ð¾Ðµ Ð¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ðµ
                     c(k) = 0;
                 else
                     c(k) = dot(column(b,k),column(A,j))/dot(column(b,k),column(b,k));
